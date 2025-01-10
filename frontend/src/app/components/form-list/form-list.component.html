@@ -1,0 +1,71 @@
+<div class="container">
+    <h2>Form List</h2>
+  
+    <input [(ngModel)]="searchTerm" placeholder="Search forms" class="form-control" />
+  
+    <button (click)="openCreateFormModal()" class="btn btn-success mt-3">Create New Form</button>
+  
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let form of filteredForms">
+          <td>{{ form.name }}</td>
+          <td>
+            <button (click)="viewForm(form)" class="btn btn-info">View</button>
+            <button (click)="deleteForm(form.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedForm" class="modal-overlay" (click)="closeFormModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-form-view [form]="selectedForm"></app-form-view>
+        <button class="btn btn-secondary mt-3" (click)="closeFormModal()">Close</button>
+      </div>
+    </div>
+  
+    
+    <div *ngIf="isCreateFormModalOpen" class="modal-overlay" (click)="closeCreateFormModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h3>Create Form</h3>
+        <form (ngSubmit)="createForm()">
+          <div class="form-group">
+            <label for="formName">Form Name</label>
+            <input id="formName" [(ngModel)]="newForm.name" name="name" class="form-control" required placeholder="Enter form name" />
+          </div>
+  
+          <div class="form-group">
+            <label for="formDescription">Form Description</label>
+            <input id="formDescription" [(ngModel)]="newForm.description" name="description" class="form-control" required placeholder="Enter form description " />
+          </div>
+  
+          <div *ngFor="let field of newForm.fields; let i = index" class="form-group">
+            <label for="fieldName">Field {{ i + 1 }} Name</label>
+            <input [(ngModel)]="field.name" name="fieldName" class="form-control" required placeholder="Enter field name" />
+            
+            <label for="fieldType">Field Type</label>
+            <select [(ngModel)]="field.dataType" name="fieldType" class="form-control">
+              <option value="string">String</option>
+              <option value="number">Number</option>
+              <option value="boolean">Boolean</option>
+            </select>
+  
+            <label for="fieldRequired">Required</label>
+            <input type="checkbox" [(ngModel)]="field.required" name="fieldRequired"
+            />
+          </div>
+
+          <button type="button" class="btn btn-secondary" (click)="addField()">Add Field</button>
+  
+          <button type="submit" class="btn btn-success mt-3">Save</button>
+          <button (click)="closeCreateFormModal()" type="button" class="btn btn-secondary mt-3 ml-2">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>

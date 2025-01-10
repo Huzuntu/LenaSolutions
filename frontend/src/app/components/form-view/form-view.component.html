@@ -1,0 +1,36 @@
+
+<div>
+    <h2>Form Details</h2>
+  
+    <div class="mb-4">
+      <h3>General Information</h3>
+      <p><strong>Name:</strong> {{ form.name }}</p>
+      <p><strong>Description:</strong> {{ form.description }}</p>
+      <p><strong>Created At:</strong> {{ form.createdAt | date:'medium' }}</p>
+      <p><strong>Created By:</strong> User ID {{ form.createdBy }}</p>
+    </div>
+  
+    <hr />
+    <div>
+      <h3>Form Fields</h3>
+      <table *ngIf="form.fields && form.fields.length > 0" class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Field Name</th>
+            <th>Data Type</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let field of form.fields; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ field.name }}</td>
+            <td>{{ field.dataType | titlecase }}</td>
+            <td>{{ field.required ? 'Yes' : 'No' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!form.fields || form.fields.length === 0" class="text-muted">No fields available for this form.</p>
+    </div>
+  </div>

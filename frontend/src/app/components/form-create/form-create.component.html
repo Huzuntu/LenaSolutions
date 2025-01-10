@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Create a New Form</h2>
+  
+    <div class="form-group">
+      <label for="name">Form Name</label>
+      <input [(ngModel)]="form.name" id="name" class="form-control" placeholder="Enter form name" required />
+    </div>
+    <div class="form-group mt-2">
+      <label for="description">Form Description</label>
+      <textarea [(ngModel)]="form.description" id="description" class="form-control" placeholder="Enter form description"></textarea>
+    </div>
+  
+    <h3>Fields</h3>
+    <div *ngFor="let field of form.fields; let i = index" class="field-group mt-3">
+      <div class="form-group">
+        <label for="fieldName">Field Name</label>
+        <input [(ngModel)]="field.name" class="form-control" placeholder="Enter field name" required />
+      </div>
+      <div class="form-group">
+        <label for="fieldType">Field Data Type</label>
+        <select [(ngModel)]="field.dataType" class="form-control">
+          <option value="STRING">String</option>
+          <option value="NUMBER">Number</option>
+          <option value="DATE">Date</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input [(ngModel)]="field.required" type="checkbox" class="form-check-input" />
+        <label class="form-check-label">Required</label>
+      </div>
+      <button (click)="removeField(i)" class="btn btn-danger mt-2">Remove Field</button>
+    </div>
+  
+    <button (click)="addField()" class="btn btn-secondary mt-3">Add New Field</button>
+  
+    <button (click)="createForm()" class="btn btn-success mt-4">Create Form</button>
+  </div>
