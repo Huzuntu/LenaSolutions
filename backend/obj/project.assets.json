@@ -5205,11 +5205,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/umuttolek/Desktop/Lena/backend/backend.csproj",
+      "projectUniqueName": "/Users/umuttolek/Desktop/LenaSolutions/LenaSolutions/backend/backend.csproj",
       "projectName": "backend",
-      "projectPath": "/Users/umuttolek/Desktop/Lena/backend/backend.csproj",
+      "projectPath": "/Users/umuttolek/Desktop/LenaSolutions/LenaSolutions/backend/backend.csproj",
       "packagesPath": "/Users/umuttolek/.nuget/packages/",
-      "outputPath": "/Users/umuttolek/Desktop/Lena/backend/obj/",
+      "outputPath": "/Users/umuttolek/Desktop/LenaSolutions/LenaSolutions/backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/umuttolek/.nuget/NuGet/NuGet.Config"
