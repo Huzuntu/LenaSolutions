@@ -35,10 +35,15 @@ This project is a web application for managing dynamic forms. It includes a **ba
    docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=password!" \
    -p 1433:1433 --name mssql-container -d mcr.microsoft.com/mssql/server:2022-latest
 MSSQL Server Details:
+	<br/>
 	•	Host: localhost
+ 	<br/>
 	•	Port: 1433
+ 	<br/>
 	•	Username: sa
-	•	Password: password --> Modify this according to something more strong
+ 	<br/>
+	•	Password: password --> Modify this to something more strong
+ 	<br/>
  
 3. Backend Setup
    ```bash
@@ -46,7 +51,7 @@ MSSQL Server Details:
    dotnet restore
    dotnet build
 
-  Update the connection string in appsettings.json with the following values:
+  3.1 Update the connection string in appsettings.json with the following values:
    ```bash
    {
     "ConnectionStrings": {
@@ -54,23 +59,24 @@ MSSQL Server Details:
     }
    }
   ```
- Run database migrations:
+  3.2 Run database migrations:
    ```bash
    dotnet ef database update
 ```
-Start the backend server:
+  3.3 Start the backend server:
    ```bash
   dotnet run
 ```
 
 4. Frontend Setup
-   Navigate to the frontend folder, install dependencies, and start the Angular development server:
+   4.1 Navigate to the frontend folder, install dependencies, and start the Angular development server:
    ```bash
     cd frontend
     npm install
     ng serve --open
    ```
 5. Access the Application
-  <br/>
-   Frontend: Open http://localhost:4200 in your browser. <br/>
-  Backend API: Accessible at http://localhost:5154 (you can change it in the application.properties).
+   <br/>
+   Frontend: Open http://localhost:4200 in your browser.
+   <br/>
+   Backend API: Accessible at http://localhost:5154 (you can change it in the application.properties).
